@@ -19,7 +19,7 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r springboot-portfolio-resume # zip에 포함시킬 파일들을 담을 디렉토리 생성
+  - zip -r springboot-portfolio-resume * # zip에 포함시킬 파일들을 담을 디렉토리 생성
   - mkdir -p deploy
   - mv springboot-portfolio-resume.zip deploy/springboot-portfolio-resume.zip # deploy로 zip파일 이동
 
