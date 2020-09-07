@@ -1,0 +1,76 @@
+{{>layout/indexHeader}}
+
+
+<div class="container">
+    <div class="col-md-12" style="top: 70px;">
+
+        {{>board/board-save}}
+        <!-- 글 목록 -->
+        <div style="width: 96%; position: relative; left: 20px; padding: inherit;">
+            <h2 style="text-align: center;"> 게시판 </h2>
+            <!-- 글 등록 버튼 -->
+            <div class="row" style="padding-top: 20px;">
+                <div class="col-md-12" style="text-align: right;">
+                    <!-- modal 버튼 -->
+                {{^userList}}
+                    <button type="button" class="btn btn-warning active" id="btn-modal" onclick="alert('로그인을 해주세요')">
+                        글 작성
+                    </button>
+                {{/userList}}
+                {{#userList}}
+                    <button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#myModal_save">
+                        글 작성
+                    </button>
+                {{/userList}}
+                </div>
+            </div>
+            <!-- /글 등록 버튼 -->
+            <br>
+
+            <!-- 글 목록 테이블 시작-->
+           <div>
+            <table class="table table-horizontal table-bordered table-hover">
+                <thead class="thead-strong">
+                    <tr>
+                        <th style="text-align: center;">번호</th>
+                        <th style="width: 60%; text-align: center;">제목</th>
+                        <th style="text-align: center;">작성자</th>
+                        <th style="text-align: center;">최종 수정일</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    {{#boardList}}
+                        <tr>
+                            <td style="text-align: center;">{{id}}</td>
+                            <td style="width: 60%; text-align: center;"><a href="/board/detail/{{id}}">{{title}}</a></td>
+                            <td style="text-align: center;">{{author}}</td>
+                            <td style="text-align: center;">{{modifiedDate}}</td>
+                        </tr>
+                    {{/boardList}}
+                </tbody>
+            </table>
+
+               <!-- pagination -->
+               <div class="container" style="width: 1041px; position: relative; padding: 0; text-align: center;">
+
+                   <ul class="pager">
+                       <li class="paginate_button previous"><a href="#">이전</a></li>
+                           <li class="paginate_button"><a href="#">1</a></li>
+                           <li class="paginate_button"><a href="#">2</a></li>
+                           <li class="paginate_button"><a href="#">3</a></li>
+                           <li><a href="#">4</a></li>
+                           <li><a href="#">5</a></li>
+                       <li class="paginate_button next"><a href="#">다음</a></li>
+                   </ul>
+               </div>
+               <!-- /pagination -->
+           </div>
+        </div>
+    </div>
+</div>
+<!--/ 글 목록 -->
+
+<div class="container" style="height: 200px; margin-bottom: 60px">
+
+</div>
+{{>layout/indexFooter}}

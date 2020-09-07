@@ -1,0 +1,97 @@
+{{>layout/indexHeader}}
+
+<div class="col-md-12" style="top: 120px;">
+
+    <!--Update  Modal -->
+    <div class="modal fade" id="myModal_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">글 수정</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title">제목</label>
+                            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" value="{{board.title}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="author"> 작성자 </label>
+                            <input type="text" class="form-control" id="author" placeholder="작성자를 입력하세요" value="{{board.author}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="content"> 내용 </label>
+                            <textarea class="form-control" id="content" placeholder="내용을 입력하세요">{{board.content}}</textarea>
+                        </div>
+
+                        <input type="hidden" value="{{board.id}}" id="id">
+                        {{#userList}}
+                            <input type="hidden" value="{{email}}" id="user-email">
+                        {{/userList}}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning active" id="btn-update">등록</button>
+                    <a href="/board/detail/{{board.id}}" role="button" class="btn btn-light">취소</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
+
+    <!-- 글 디테일 -->
+    <div class="row" style="width: 85%; position: relative; left: 100px;">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Board Read Page</div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>제목</label> <input class="form-control" name='title'
+                                                    value="{{board.title}}" readonly="readonly">
+                    </div>
+
+                    <div class="form-group">
+                        <label>본문</label>
+                        <textarea class="form-control" rows="3" name='content'
+                                  readonly="readonly">{{board.content}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>작성자</label> <input class="form-control" name='author'
+                                                     value="{{board.author}}" readonly="readonly">
+                    </div>
+
+                    <!-- 글 수정, 삭제, 취소 -->
+                    <div class="row">
+                        <div class="col-md-12" style="text-align: right;">
+                         {{#userList}}
+                            <!-- modal 버튼 -->
+                            <button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#myModal_update" id="btn-update-before">
+                                수정
+                            </button>
+                            <button type="button" class="btn btn-danger active" id="btn-delete">
+                                삭제
+                            </button>
+                         {{/userList}}
+                            <a href="/board" role="button" class="btn btn-light active" style="height: 37px; width: 55px;">
+                                목록
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /글 수정, 삭제 -->
+                </div>
+                <!--  end panel-body -->
+
+            </div>
+            <!--  end panel-body -->
+        </div>
+        <!-- end panel -->
+    </div>
+    <!-- /.row -->
+
+    <!--/ 글 디테일 -->
+</div>
+
+{{>layout/footer}}
