@@ -48,7 +48,7 @@ public class BoardService {
 
         return new BoardResponseDto(entity);
     }
-// sd
+
     @Transactional(readOnly = true)
     public List<BoardListResponseDto> findAllDesc() {
 
@@ -56,5 +56,4 @@ public class BoardService {
                 .map(BoardListResponseDto::new)
                 .collect(Collectors.toList());
     }
-
  }
